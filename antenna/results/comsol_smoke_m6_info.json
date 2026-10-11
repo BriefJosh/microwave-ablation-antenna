@@ -1,0 +1,16 @@
+{
+ "tag": "smoke_m6",
+ "mesh_size_index": 6,
+ "n_elem": 242636,
+ "ndof": null,
+ "mesh_s": 16.5,
+ "solve_s": 92.5,
+ "n_freq": 1,
+ "liver_margin": null,
+ "p_abs_over_pinc": [
+  0.714744315254158
+ ],
+ "one_minus_s11sq": [
+  0.726195797332057
+ ]
+}
