@@ -1,0 +1,192 @@
+{
+ "model": "wen2021_gate_sweep11_tbc_m6.mph (solved model, not in this repository)",
+ "solnum": 5,
+ "freq_GHz": 2.4,
+ "x_liver0_mm": 37.0,
+ "bbox_mm": [
+  -5.0,
+  119.99999999999999,
+  -31.7,
+  31.7,
+  -35.0,
+  35.665
+ ],
+ "slice_z_mm_quick_midplane": 0.3324999999999996,
+ "z_top_mm": 0.665,
+ "fep_outer_y_mm": 2.05,
+ "eps_c_liver": [
+  43.2,
+  -12.657468774101151
+ ],
+ "abs_eps_c_liver": 45.01612506388512,
+ "pairs": [
+  {
+   "probe": "a: air|liver, y 2.3, slice z",
+   "y_mm": 2.3,
+   "z_mm": 0.3324999999999996,
+   "x_below_mm": 36.98,
+   "x_above_mm": 37.02,
+   "abs_E_below": 1246.4911329855404,
+   "abs_E_above": 142.89643403525938,
+   "abs_Ex_Ey_Ez_below": [
+    1233.284044336538,
+    180.72973636663315,
+    9.34735199591608
+   ],
+   "abs_Ex_Ey_Ez_above": [
+    52.612096875060125,
+    132.68466943756792,
+    6.792394176272315
+   ],
+   "tangential_mismatch": 0.27034008419014166,
+   "normal_D_mismatch": 0.9203960105210376,
+   "normal_share_a": 0.9789214363096246,
+   "norm_ratio": 8.723038761610885
+  },
+  {
+   "probe": "a: air|liver, y 3, slice z",
+   "y_mm": 3.0,
+   "z_mm": 0.3324999999999996,
+   "x_below_mm": 36.98,
+   "x_above_mm": 37.02,
+   "abs_E_below": 387.8563075101464,
+   "abs_E_above": 84.83429640737869,
+   "abs_Ex_Ey_Ez_below": [
+    376.82562570207557,
+    91.80654383120935,
+    2.5537422369313516
+   ],
+   "abs_Ex_Ey_Ez_above": [
+    8.266448236216123,
+    84.40191830521766,
+    2.1999697480442544
+   ],
+   "tangential_mismatch": 0.08099427131391533,
+   "normal_D_mismatch": 0.04802261913643565,
+   "normal_share_a": 0.9439285910083858,
+   "norm_ratio": 4.571928146225676
+  },
+  {
+   "probe": "a: air|liver, y 5, slice z",
+   "y_mm": 5.0,
+   "z_mm": 0.3324999999999996,
+   "x_below_mm": 36.98,
+   "x_above_mm": 37.02,
+   "abs_E_below": 142.86254011051253,
+   "abs_E_above": 53.110205560373835,
+   "abs_Ex_Ey_Ez_below": [
+    132.42301110736386,
+    53.543489509045294,
+    2.635569631322397
+   ],
+   "abs_Ex_Ey_Ez_above": [
+    3.235533748656694,
+    52.95535273210323,
+    2.440465743458353
+   ],
+   "tangential_mismatch": 0.013991581607644734,
+   "normal_D_mismatch": 0.22015987282304164,
+   "normal_share_a": 0.8591919165693737,
+   "norm_ratio": 2.689926325894396
+  },
+  {
+   "probe": "a: air|liver, y 0, z 1.5",
+   "y_mm": 0.0,
+   "z_mm": 1.5,
+   "x_below_mm": 36.98,
+   "x_above_mm": 37.02,
+   "abs_E_below": 759.3576247884824,
+   "abs_E_above": 149.23240743546657,
+   "abs_Ex_Ey_Ez_below": [
+    742.2350199431135,
+    4.643009096771514,
+    160.2798176969859
+   ],
+   "abs_Ex_Ey_Ez_above": [
+    33.58139390678002,
+    4.212852952972,
+    145.3439138122385
+   ],
+   "tangential_mismatch": 0.09542861845868716,
+   "normal_D_mismatch": 1.036800430451579,
+   "normal_share_a": 0.9554108441708841,
+   "norm_ratio": 5.088423070014841
+  },
+  {
+   "probe": "a: air|liver, y 0, z 3",
+   "y_mm": 0.0,
+   "z_mm": 3.0,
+   "x_below_mm": 36.98,
+   "x_above_mm": 37.02,
+   "abs_E_below": 220.58178836765458,
+   "abs_E_above": 84.7155913851362,
+   "abs_Ex_Ey_Ez_below": [
+    203.1586155913138,
+    0.3895260475301513,
+    85.92293372523918
+   ],
+   "abs_Ex_Ey_Ez_above": [
+    4.58152225713307,
+    0.330531212115817,
+    84.59096776050369
+   ],
+   "tangential_mismatch": 0.015571151846858856,
+   "normal_D_mismatch": 0.287273867654263,
+   "normal_share_a": 0.8482642859700419,
+   "norm_ratio": 2.6037921091153104
+  },
+  {
+   "probe": "b: control, FEP wall, y 1.95, slice z",
+   "y_mm": 1.95,
+   "z_mm": 0.3324999999999996,
+   "x_below_mm": 36.98,
+   "x_above_mm": 37.02,
+   "abs_E_below": 2406.7492029797986,
+   "abs_E_above": 2479.3222341763335,
+   "abs_Ex_Ey_Ez_below": [
+    511.04664294385606,
+    2351.574388415331,
+    37.02634911478504
+   ],
+   "abs_Ex_Ey_Ez_above": [
+    512.2345726957357,
+    2425.6459195364196,
+    29.9392126259582
+   ],
+   "tangential_mismatch": 0.03164640905284068,
+   "normal_D_mismatch": 0.0031120659408883197,
+   "normal_share_a": 0.04508783749863588,
+   "norm_ratio": 0.9707286813322815
+  },
+  {
+   "probe": "c: control, board, y 0, slice z",
+   "y_mm": 0.0,
+   "z_mm": 0.3324999999999996,
+   "x_below_mm": 36.98,
+   "x_above_mm": 37.02,
+   "abs_E_below": 9185.216028174747,
+   "abs_E_above": 9159.541702751361,
+   "abs_Ex_Ey_Ez_below": [
+    73.42079661178171,
+    201.5095630802049,
+    9182.71184165388
+   ],
+   "abs_Ex_Ey_Ez_above": [
+    73.124907008904,
+    202.248714031648,
+    9157.016567096991
+   ],
+   "tangential_mismatch": 0.010083884311402494,
+   "normal_D_mismatch": 0.005514386237623394,
+   "normal_share_a": 6.389390542202013e-05,
+   "norm_ratio": 1.002803014196188
+  }
+ ],
+ "face_boundaries": [
+  1,
+  448
+ ],
+ "emw_features_on_face": {},
+ "slice_plots": [],
+ "nan_points": 0
+}
