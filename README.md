@@ -13,6 +13,14 @@ Nominal stackups listed on the JLCPCB order form (FR-4, 4 layers, 0.8 mm, 1 oz o
 
 ![JLCPCB 4-layer 0.8 mm stackup templates](pcb_stackup/jlcpcb_4layer_0p8mm/JLC04081H-overview.png)
 
+## Stackup comparison
+
+Layer stacks of the JLCPCB 4-layer order (JLC04081H-7628), this work (the same order with L3 left empty, which JLCPCB etches away and fills with resin), and four published planar ablation antennas, drawn at one thickness scale in mm. n/r: not reported in the paper.
+
+![Layer stacks of the JLCPCB order, this work and four published antennas](pcb_stackup/stackup_comparison.png)
+
+Vector version: [`pcb_stackup/stackup_comparison.pdf`](pcb_stackup/stackup_comparison.pdf).
+
 ## S11 simulation, Wen 2021 baseline
 
 Status: provisional. This is the reference the JLCPCB-stack simulations will be compared with; the JLCPCB stack-up itself has not been simulated yet.
