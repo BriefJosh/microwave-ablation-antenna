@@ -1,6 +1,14 @@
 # microwave-ablation-antenna
 Planar Microwave Ablation Antenna
 
+## From coaxial to planar (SICL)
+
+A standard coaxial microwave ablation antenna is a round coaxial line: an inner conductor inside a round copper shield. A substrate-integrated coaxial line (SICL) is the same line built as a printed circuit board. The round shield is opened into two flat copper planes, the inner conductor becomes a strip between them, and two rows of vias close the sides. Every part is made by an ordinary PCB process: copper planes, drilled vias and laminate.
+
+![A standard coaxial line (left) and the planar SICL it becomes (right)](introduction/coax_to_sicl.png)
+
+*Fig. 1. Left: standard coaxial line, inner conductor in a round shield. Right: the same line as a SICL, with flat copper planes, a strip inner conductor and via side walls.*
+
 ## Antenna layout (KiCad)
 
 Planar antenna in the KiCad PCB editor.
