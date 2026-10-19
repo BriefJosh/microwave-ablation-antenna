@@ -1,0 +1,8 @@
+numpy
+matplotlib
+Pillow
+pytest
+# COMSOL scripts (needs COMSOL Multiphysics 6.1 and a licence)
+mph
+# geometry reference for test_jlc_stack and the COMSOL geometry tests
+klayout
