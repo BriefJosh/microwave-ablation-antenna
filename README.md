@@ -1,7 +1,5 @@
 ## A Low-Cost Substrate-Integrated Coaxial Microwave Ablation Antenna, Designed for Commodity PCB Fabrication
 
-**Thesis (in progress):** *Tolerance-Aware Design of a Low-Cost Substrate-Integrated Coaxial Microwave Ablation Antenna for Commodity PCB Fabrication*
-
 <p align="center"><img src="./introduction/coax_to_sicl.png" width="900"></p>
 <p align="center"><em>Figure 1: A coaxial ablation antenna (left) rebuilt as a printed circuit board (right). The round shield opens into two copper planes, the inner conductor becomes a strip, and two rows of vias close the sides.</em></p>
 
