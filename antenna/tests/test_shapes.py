@@ -1,4 +1,5 @@
 import math
+from dataclasses import replace
 from params import P, derived
 import shapes
 
@@ -75,3 +76,27 @@ def test_text_variant_has_no_tip_bar():
     import dataclasses
     polys, _ = shapes.build(dataclasses.replace(P, n_helix_steps=12, helix_tip_bar=False))
     assert len([q for q in polys if q.layer == "TOP" and q.tag == "helix"]) == 13
+
+
+def _miter(layer, polys=POLYS): return [q for q in polys if q.layer == layer and q.tag == "miter"]
+
+def test_miter_fill_on_both_outer_layers():
+    assert len(_miter("TOP")) == 1 and len(_miter("BOTTOM")) == 1
+
+def test_miter_corner_is_intersection_of_outer_edges():
+    x4 = D["x_sicl1"] + P.L4; w = P.W5
+    for layer, sgn in (("TOP", +1), ("BOTTOM", -1)):    # top slant goes to +row (outer side -y); bottom to -row (outer side +y)
+        pts = _miter(layer)[0].pts
+        ys = [y for _, y in pts]
+        assert math.isclose(min(ys) if sgn > 0 else max(ys), -sgn * w / 2, abs_tol=1e-9)   # the fill sits on the outer side only
+        assert all(-sgn * y >= -1e-9 for y in ys)
+        corner = max((q for q in pts if math.isclose(q[1], -sgn * w / 2, abs_tol=1e-9)), key=lambda q: q[0])
+        assert corner[0] > x4
+        ux, uy = D["x_helix0"] - x4, sgn * D["y_row"]; L = math.hypot(ux, uy); ux, uy = ux / L, uy / L
+        # the corner lies on the slant's outer edge: w/2 from the centreline through (x4, 0)
+        assert math.isclose(abs((corner[0] - x4) * uy - corner[1] * ux), w / 2, abs_tol=1e-9)
+
+def test_flag_off_reproduces_old_geometry():
+    old_polys, _ = shapes.build(replace(P, arm_miter_join=False))
+    assert not [q for q in old_polys if q.tag == "miter"]
+    assert len(old_polys) == len(POLYS) - 2

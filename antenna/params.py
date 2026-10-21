@@ -44,6 +44,7 @@ class Wen2021:
     helix_drill: float = 0.2
     n_helix_steps: int = 13   # Fig. 4b: 14 pads per row (13 steps). The text's 49.4 mm arm needs 12 steps and no tip bar; see helix_tip_bar
     helix_tip_bar: bool = True  # Fig. 4b: a 14th bar per layer ends free beyond the last via pad (no via)
+    arm_miter_join: bool = True  # sharp outer corner where the straight arm turns into the helix (Fig. 4b); False = the pre-2026-10-21 square ends
     plate_w: float = 3.2
     wedge_len: float = 2.5
     fep_t: float = 0.35
@@ -66,7 +67,7 @@ SOURCES = {
     "t_cu_outer": "S II.A", "t_cu_inner": "S II.A / T1 t", "sigma_cu": "assumption (annealed copper, 5.8e7 S/m)",
     "h_top": "S II.A", "h_bond": "S II.A", "h_bot": "S II.A", "eps_fr4": "S II.A", "tand_fr4": "S II.A",
     "a": "T1 a = T2 W2 (fence-row centre spacing, Fig.4b)", "w_inner": "T1 w = T2 W3",
-    "d_feed": "T1 d", "D_antipad": "T1 D", "fence_drill": "T1 R1, a diameter per S II.A",
+    "d_feed": "T1 d", "D_antipad": "T1 D", "fence_drill": "T1 R1 = via hole size 0.4 mm (S II.A 'diameter of the metalized vias'; Fig. 4(b) fence holes measure 0.41 mm, 2026-10-20)",
     "fence_pitch": "T1 p", "sicl_len": "S II.B '54 mm long SICL'",
     "L1": "T2 (feed paddle length, Fig.4a)", "L2": "T2 + S II.B '12.5 mm long microstrip'",
     "W1": "T2", "W6": "T2 (launch strip width, Fig.4a)",
@@ -75,8 +76,9 @@ SOURCES = {
     "feed_inner_pad": "assumption (inner-layer pad on the feed via)",
     "L3": "T2", "L4": "T2", "L5": "T2 (via spacing along a row, Fig.4b inner layer)", "L6": "T2 + S II.B 14.5 mm",
     "L7": "T2 (via-row spacing)", "W4": "T2 (board width)", "W5": "T2 (arm trace width)",
-    "theta_deg": "T2", "helix_pad": "T2 R2 (pad diameter, Fig.4b)",
-    "helix_drill": "assumption (JLCPCB-feasible drill in a 0.4 pad)",
+    "theta_deg": "T2", "helix_pad": "via diameter (copper pad, JLCPCB term). Fig. 4(b) measured 2026-10-20: ring about 0.45 mm on both outer layers (= T2 R3). 0.40 used before 2026-10-21 (read as T2 R2). Candidates 0.40/0.45/0.50 run 2026-10-21",
+    "arm_miter_join": "D: miter at the arm-to-helix bend, sharp outer corner as Wen 2021 Fig. 4(b) draws it (2026-10-21); runs before 2026-10-21 had the two square ends meeting (False)",
+    "helix_drill": "via hole size (drilled hole = the solver pillar, JLCPCB term). Fig. 4(b) measured 2026-10-20: about 0.20 mm on all three layers (fence holes as the 0.4 mm control); T2 R2/R3 labels do not match the drawing. Candidates 0.2/0.3/0.4 run 2026-10-21",
     "n_helix_steps": "F Fig.4b: 14 pads per row (13 steps). Provisional baseline since 2026-10-12: the text's 49.4 mm arm (S II.B) gives 12 steps",
     "helix_tip_bar": "F Fig.4b: 14 full bars per layer, the last one dangling. Provisional baseline since 2026-10-12 (COMSOL dip 2.434 GHz)",
     "plate_w": "D: W2 + R1 so plates cover the fence vias", "wedge_len": "F Fig.4b (assumption)",

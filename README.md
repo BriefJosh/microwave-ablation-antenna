@@ -34,6 +34,7 @@
     - [Same Layout, JLCPCB's Stack](#jlc_as_drawn)
     - [Retuning the Layout](#retune)
     - [Inner-Strip Width](#strip)
+    - [Helix Via Size](#via)
 10. [Permittivity Tolerance](#tolerance)
 11. [Impedance along the Line](#impedance)
 12. [Repository Structure](#repo)
@@ -271,6 +272,24 @@ Widening the inner strip (inside the 2.8 mm via fence, so the board does not get
 
 The strip is also the short dipole arm beyond the line, so the shift mixes a lower line impedance with a wider arm. A 1.1 mm strip needs the layout retuned upward before it is useful.
 
+<a name="via"></a>
+### 9.4 Helix Via Size
+
+The helix vias need a size JLCPCB can drill without extra charge. JLCPCB's rule: "0.2mm or 0.25mm hole size with via diameter less than 0.45mm, will cost more". Four sizes (hole / via diameter) were simulated on the retuned layout, with the bend where the straight arm meets the helix drawn as one sharp corner.
+
+<p align="center"><img src="./figures/helix_via_candidates.png" width="800"></p>
+<p align="center"><em>Figure 18: |S11| of the retuned layout for four helix vias. The dashed curve is the earlier layout with a square-ended bend.</em></p>
+
+| Helix via, hole / via diameter (mm) | Extra charge | Dip (GHz) | Depth (dB) | \|S11\| at 2.45 GHz (dB) | −10 dB band (GHz) | Width (MHz) |
+|---|---|---|---|---|---|---|
+| 0.2 / 0.40, square-ended bend | yes | 2.4658 | −20.2 | −18.40 | 2.4136 to 2.5114 | 98 |
+| 0.2 / 0.40 | yes | 2.4686 | −20.5 | −17.56 | 2.4156 to 2.5134 | 98 |
+| 0.2 / 0.45 | no | 2.4569 | −20.2 | −19.83 | 2.4100 to 2.5064 | 96 |
+| 0.3 / 0.45 | no | 2.4714 | −22.5 | −17.23 | 2.4165 to 2.5170 | 101 |
+| 0.4 / 0.50 | no | 2.4749 | −23.0 | −14.94 | 2.4241 to 2.5232 | 99 |
+
+Retuned layout, JLCPCB nominal stack, index 6, 2.30 to 2.60 GHz in 25 MHz steps. All four keep 2.45 GHz inside the −10 dB band, and the dips lie within 18 MHz of each other, less than one frequency step. The larger pads also change the mesh by 7 to 11 %, so this comparison does not separate the via from the mesh. The sharp bend moves the dip by 3 MHz.
+
 [Return to top](#toc)
 
 ---
@@ -279,7 +298,7 @@ The strip is also the short dipole arm beyond the line, so the shift mixes a low
 ## 10. Permittivity Tolerance
 
 <p align="center"><img src="./figures/permittivity_tolerance.png" width="900"></p>
-<p align="center"><em>Figure 18: Simulated dip frequency of each layout and permittivity. On the retuned layout, permittivity 3.9 to 4.4 moves the dip 124 MHz; at 3.9 it fails (−4.2 dB at 2.45 GHz).</em></p>
+<p align="center"><em>Figure 19: Simulated dip frequency of each layout and permittivity. On the retuned layout, permittivity 3.9 to 4.4 moves the dip 124 MHz; at 3.9 it fails (−4.2 dB at 2.45 GHz).</em></p>
 
 | Retuned layout, permittivity | Dip (GHz) | \|S11\| at 2.45 GHz (dB) | −10 dB band (GHz) |
 |---|---|---|---|
@@ -297,7 +316,7 @@ The plausible range comes from the laminate maker's datasheet (Nan Ya NP-155F: 4
 ## 11. Impedance along the Line
 
 <p align="center"><img src="./figures/impedance_along_the_line.png" width="900"></p>
-<p align="center"><em>Figure 19: The SICL's characteristic impedance and wavelength, fitted from the voltage and current at 53 planes along the line (JLCPCB stack, L4 = 8.0 mm, index 6, 2.45 GHz).</em></p>
+<p align="center"><em>Figure 20: The SICL's characteristic impedance and wavelength, fitted from the voltage and current at 53 planes along the line (JLCPCB stack, L4 = 8.0 mm, index 6, 2.45 GHz).</em></p>
 
 - The voltage is the integral of Ez from the strip to the top plate. The current is the loop integral of H around the strip. A uniform-line fit gives Z0, the wavelength and the impedance at the end of the line (`antenna/analysis/line_fit.py`, tested on synthetic lines).
 - Z0 is about 29.6 Ω (27.8 to 31.3 over sub-ranges), with a guided wavelength of 57.9 mm. The load near the line end is about 9 + j10 Ω. Uncertainty is about ±10%.

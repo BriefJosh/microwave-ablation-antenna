@@ -33,6 +33,15 @@ def trace(layer, xa, ya, xb, yb, w, tag=""):
     nx, ny = -uy * w / 2, ux * w / 2
     return Poly(layer, ((xa + nx, ya + ny), (xb + nx, yb + ny), (xb - nx, yb - ny), (xa - nx, ya - ny)), False, tag)
 
+def miter_fill(x4, ya, xb, yb, w):
+    """Copper that turns the square-ended join of the straight arm (along +x, ending at x4) and the slanted trace from (x4, ya)
+    to (xb, yb) into one sharp outer corner: the two outer edges extended to their intersection (Wen 2021 Fig. 4b draws it so)."""
+    L = math.hypot(xb - x4, yb - ya); ux, uy = (xb - x4) / L, (yb - ya) / L
+    sg = 1.0 if uy > 0 else -1.0                                  # turn towards +y: the outer side is -y, and the reverse
+    rc = (x4 + sg * uy * w / 2, ya - sg * ux * w / 2)              # the slant's start corner on the outer side
+    t = (-sg * w / 2 + sg * ux * w / 2) / uy                       # along the slant's outer edge back to the arm's outer edge
+    return ((x4, ya), (x4, ya - sg * w / 2), (rc[0] + t * ux, ya - sg * w / 2), rc)
+
 def build(p=P):
     d = derived(p); polys, vias = [], []
     zb, zt = d["z_bot"], d["z_top"]
@@ -67,6 +76,9 @@ def build(p=P):
     x0 = d["x_helix0"]
     polys.append(trace("TOP", x4, 0.0, x0, +yr, p.W5, "helix"))      # arm A first segment -> (+row, k=0)
     polys.append(trace("BOTTOM", x4, 0.0, x0, -yr, p.W5, "helixB0")) # arm B first segment -> (-row, k=0)
+    if p.arm_miter_join:  # sharp outer corner at the bend; before 2026-10-21 the two square ends met with a notch
+        polys.append(Poly("TOP", miter_fill(x4, 0.0, x0, +yr, p.W5), False, "miter"))
+        polys.append(Poly("BOTTOM", miter_fill(x4, 0.0, x0, -yr, p.W5), False, "miter"))
     for k in range(p.n_helix_steps + 1):
         x = x0 + k * p.L5
         for y in (-yr, yr):
