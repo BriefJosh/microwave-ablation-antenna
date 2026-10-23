@@ -410,4 +410,3 @@ Each solve takes about 10 to 20 minutes on a 6-core laptop. The CSV files in `an
 - Code: MIT ([`LICENSE`](LICENSE)).
 - Figures and text: CC BY 4.0 ([`LICENSE-figures`](LICENSE-figures)).
 - Digitised data from published papers (`antenna/results/paper_fig7a_*.csv`) belongs to its authors and is included for comparison, with the citation above.
-hello
